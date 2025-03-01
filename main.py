@@ -4,6 +4,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 import joblib  # To load the scaler
+import os
 
 app = Flask(__name__)
 CORS(app)  # Allow React Native to access this API
@@ -49,4 +50,5 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000, debug=True)
+    port = int(os.environ.get("PORT", 10000))  # Default to 10000 if not set
+    app.run(host="0.0.0.0", port=port, debug=True)
