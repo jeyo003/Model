@@ -1,10 +1,13 @@
+import os
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'  # Disable OneDNN optimizations
+os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'  # Prevent full memory allocation
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # Force TensorFlow to use CPU only
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 import joblib  # To load the scaler
-import os
 
 app = Flask(__name__)
 CORS(app)  # Allow React Native to access this API
