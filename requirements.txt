@@ -3,4 +3,4 @@ tensorflow
 numpy
 gunicorn
 flask-cors
-scikit-learn
+scikit-learn==1.5.1
